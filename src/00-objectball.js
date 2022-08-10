@@ -128,14 +128,14 @@ function gameObject(){
 //     }
 // }
 
+const game = gameObject();
+const awayPlayers = game.away.players;
+const homePlayers = game.home.players;
+const allPlayers = {...awayPlayers, ...homePlayers}
 
 function numPointsScored(playerName){
-    const game = gameObject();
-    const awayPlayers = game.away.players;
-    const homePlayers = game.home.players;
     // console.log("away players", awayPlayers)
     // console.log("home players", homePlayers)
-    const allPlayers = {...awayPlayers, ...homePlayers}
     // console.log('all players', allPlayers)
     for (const playerKey in allPlayers){
         if (playerKey === playerName) {
@@ -147,26 +147,32 @@ function numPointsScored(playerName){
 
 
 function shoeSize(playerName){
-    const game = gameObject();
-    const awayPlayers = game.away.players;
-    const homePlayers = game.home.players;
-    // console.log("away players", awayPlayers)
-    // console.log("home players", homePlayers)
-    const allPlayers = {...awayPlayers, ...homePlayers}
     for (const playerKey in allPlayers){
         if (playerKey === playerName) {
             return allPlayers[playerKey].shoe
         }
-        debugger
     }
 }
 
 function teamColors(teamName){
-    const game = gameObject()
     for (const awayOrHome in game){
         const teamObj = game[awayOrHome]
         if (teamObj.teamName === teamName){
             return teamObj.colors
         }
     }
+}
+
+function teamNames(){
+    let teamNameArray = []
+   teamNameArray.push(game.home.teamName)
+   teamNameArray.push(game.away.teamName)
+    return teamNameArray
+    // for (const team in game){
+    //     console.log(game.team.teamName)
+    // }
+}
+
+function playerNumbers(teamName){
+    
 }
